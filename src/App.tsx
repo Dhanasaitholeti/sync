@@ -3,6 +3,8 @@ import LandingPage from "./components/LandingPage";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Routegaurd from "./components/Routegaurd";
+import Home from "./pages/Home";
+import Layout from "./components/Layout";
 
 function App() {
   return (
@@ -11,9 +13,15 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="" element={<Routegaurd />}>
-          <Route path="/home" element={<>Hello world</>} />
-        </Route>
+        <Route
+          path="/home"
+          element={
+            <Layout>
+              <Home />
+            </Layout>
+          }
+        />
+        <Route path="" element={<Routegaurd />}></Route>
       </Routes>
     </>
   );
