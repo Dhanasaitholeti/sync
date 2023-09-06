@@ -2,11 +2,11 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   theme: {
     container: {
       center: true,
@@ -16,6 +16,14 @@ module.exports = {
       },
     },
     extend: {
+      gridTemplateRows: {
+        // Simple 8 row grid
+        8: "repeat(8, minmax(0, 1fr))",
+        10: "repeat(10, minmax(0, 1fr))",
+      },
+      gridRow: {
+        "span-9": "span 9 / span 9",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },
@@ -33,4 +41,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
