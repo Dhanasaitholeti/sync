@@ -2,21 +2,20 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   chats: null,
+  err: false,
 };
 
-export const chatSlice = createSlice({
+export const chatSlice: any = createSlice({
   name: "chats",
   initialState,
   reducers: {
-    addChats: (state) => {
-      console.log("chats added");
-    },
-    removeChats: (state) => {
-      console.log("chats removed");
+    updateChats: (state, action: any) => {
+      state.chats = action.payload.chats;
+      state.err = action.payload.err;
     },
   },
 });
 
-export const { addChats, removeChats } = chatSlice.actions;
+export const { updateChats } = chatSlice.actions;
 
 export default chatSlice.reducer;

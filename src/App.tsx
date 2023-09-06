@@ -5,6 +5,7 @@ import Signup from "./pages/Signup";
 import Routegaurd from "./components/Routegaurd";
 import Home from "./pages/Home";
 import Layout from "./components/Layout";
+import Chat from "./pages/Chat";
 
 function App() {
   return (
@@ -18,6 +19,14 @@ function App() {
           element={
             <Layout>
               <Home />
+            </Layout>
+          }
+        />
+        <Route
+          path="/chat/:chatId"
+          element={
+            <Layout>
+              <Chat />
             </Layout>
           }
         />
