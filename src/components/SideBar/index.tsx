@@ -14,7 +14,11 @@ const SideBar = () => {
     <>
       <aside className=" px-3 py-5 flex flex-col space-y-5 drop-shadow-xl ">
         <div>
-          <Input type="Email" placeholder="Search with Email" />
+          <Input
+            type="Email"
+            placeholder="Search with Email"
+            className="border-white-200 focus-visible:ring-green-300"
+          />
         </div>
         <Separator className="h-0.5 bg-gray-500" />
         <div className="space-y-5">

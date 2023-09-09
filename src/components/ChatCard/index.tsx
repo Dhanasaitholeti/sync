@@ -9,11 +9,10 @@ interface ChatsDataprops {
   }[];
 }
 const ChatCard: React.FC<ChatsDataprops> = ({ Chatlist }) => {
-  console.log(Chatlist);
   return (
     <>
       {Chatlist.map((chat) => (
-        <Link to={`/chat/${Chatlist[0].id}`}>
+        <Link to={`/chat/${Chatlist[0].id}`} key={Chatlist[0].id}>
           <Card className="flex align-center  py-2 px-2 group hover:cursor-pointer">
             <Avatar className="h-[40px] w-[40px]">
               <AvatarFallback className="bg-neutral-700 text-slate-50 font-bold text-2xl group-hover:bg-neutral-400 group-hover:text-slate-950">
