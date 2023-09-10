@@ -4,6 +4,7 @@ import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
 import { updateChats } from "@/redux/features/userChats";
 import { updateMsgs } from "@/redux/features/chatMessages";
+import { extractedMsgsType } from "@/configs/Types";
 
 const useSocket = () => {
   const dispatcher = useDispatch();
@@ -20,17 +21,27 @@ const useSocket = () => {
     });
 
     socket.on("chatsData", (chatsData) => {
-      console.log("This is Chats Data from the socket server", chatsData);
-      dispatcher(updateChats({ chats: chatsData, err: false }));
-      socket.emit("GetChatMessages", {
-        chatId: "580f4212-760a-4c79-be5f-40dea46979b1",
+      const extractedmsgs: extractedMsgsType = {};
+      chatsData.forEach((each: any) => {
+        extractedmsgs[each.id] = each.messages;
       });
+      dispatcher(updateMsgs({ msgs: extractedmsgs, err: false })); //dispatching action alogn with payload to update data in store
+
+      const extractedchats = chatsData.map((each: any) => ({
+        ChatId: each.id,
+        Chatpartner: each.members[0].Name,
+      }));
+
+      dispatcher(updateChats({ chats: extractedchats, err: false })); //dispatching action alogn with payload to update data in store
     });
 
-    socket.on("chatmessages", (chatmsgs) => {
-      console.log(chatmsgs);
-      dispatcher(updateMsgs({ msgs: chatmsgs.messages, err: false }));
-    });
+    // socket.emit("GetChatMessages", {
+    //   chatId: "580f4212-760a-4c79-be5f-40dea46979b1",
+    // });
+    // socket.on("chatmessages", (chatmsgs) => {
+    //   console.log(chatmsgs);
+    //   dispatcher(updateMsgs({ msgs: chatmsgs.messages, err: false }));
+    // });
 
     socket.on("disconnect", () => {
       console.log("Disconnect from socker server");
