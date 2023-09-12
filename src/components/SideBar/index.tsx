@@ -9,7 +9,6 @@ const SideBar = () => {
   const userChats = useSelector((state: any) => state.userChats.chats);
 
   useSocket();
-
   return (
     <>
       <aside className=" px-3 py-5 flex flex-col space-y-5 drop-shadow-xl ">

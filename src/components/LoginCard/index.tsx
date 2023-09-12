@@ -10,9 +10,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Link } from "react-router-dom";
-import { useCookies } from "react-cookie";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const labelStyles = "text-md font-bold";
 const fieldStyles = "grid w-full max-w-sm items-center gap-1.5";
@@ -20,7 +20,6 @@ const fieldStyles = "grid w-full max-w-sm items-center gap-1.5";
 const LoginCard = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [cookies, setCoookie, removeCookie] = useCookies(["SynkToken"]);
   const [Credential, setCredential] = useState({
     Email: "",
     Password: "",
@@ -40,7 +39,7 @@ const LoginCard = () => {
         "http://localhost:8080/user/login",
         Credential
       );
-      setCoookie("SynkToken", resp.data.token);
+      Cookies.set("SynkToken", resp.data.token);
       setLoading(false);
       navigate("/home");
     } catch (error) {
