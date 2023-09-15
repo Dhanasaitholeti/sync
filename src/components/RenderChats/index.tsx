@@ -8,7 +8,7 @@ interface chatMessageType {
 
 const RenderChats: React.FC<chatMessageType> = ({ chats }) => {
   const currentuser = useSelector((state: any) => state.user.user);
-  console.log(currentuser);
+  // console.log(currentuser);
 
   return (
     <>

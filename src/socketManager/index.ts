@@ -1,30 +1,32 @@
-import { useEffect } from "react";
-import { io } from "socket.io-client";
-
+import Cookies from "js-cookie";
+import { Socket, io } from "socket.io-client";
 import { useDispatch } from "react-redux";
 import { updateChats } from "@/redux/features/userChats";
 import { updateMsgs } from "@/redux/features/chatMessages";
 import { extractedMsgsType } from "@/configs/Types";
 import { updateUser } from "@/redux/features/userData";
-import Cookies from "js-cookie";
 
-const useSocket = () => {
+let socket: Socket | null = null;
+
+const InitializeSocket = () => {
   const dispatcher = useDispatch();
 
-  const socket = io("http://localhost:8080", {
-    auth: {
-      token: Cookies.get("SynkToken"),
-    },
-  });
+  if (Cookies.get("SynkToken") && !socket) {
+    socket = io("http://localhost:8080", {
+      auth: {
+        token: Cookies.get("SynkToken"),
+      },
+    });
 
-  useEffect(() => {
     socket.on("connect", () => {
       console.log("Connected to socker server");
     });
 
-    socket.on("chatsData", (chatsData) => {
-      console.log(chatsData);
+    socket.on("message", (message: any) => {
+      console.log("Got the data", message);
+    });
 
+    socket.on("chatsData", (chatsData) => {
       dispatcher(
         updateUser({
           user: {
@@ -52,17 +54,11 @@ const useSocket = () => {
     socket.on("disconnect", () => {
       console.log("Disconnect from socker server");
     });
-
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
-
-  const sendToChannel = (channelName: string, data: any) => {
-    socket.emit(channelName, data);
-  };
-
-  return { sendToChannel };
+  }
 };
 
-export default useSocket;
+const emitMessage = (message: any) => {
+  socket?.emit("sendMessage", message);
+};
+
+export { socket, InitializeSocket, emitMessage };

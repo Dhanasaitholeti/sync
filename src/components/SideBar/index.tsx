@@ -3,15 +3,13 @@ import ChatSkeleton from "../Skeletons/ChatSkeleton";
 import { Input } from "../ui/input";
 import { Separator } from "../ui/separator";
 import ChatCard from "../ChatCard";
-import useSocket from "@/hooks/useSocket";
 
 const SideBar = () => {
   const userChats = useSelector((state: any) => state.userChats.chats);
-
-  useSocket();
+  console.log(userChats);
   return (
     <>
-      <aside className=" px-3 py-5 flex flex-col space-y-5 drop-shadow-xl ">
+      <aside className=" px-3 py-5 flex flex-col space-y-5 drop-shadow-xl">
         <div>
           <Input
             type="Email"

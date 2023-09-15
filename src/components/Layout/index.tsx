@@ -1,14 +1,24 @@
+import { useDispatch } from "react-redux";
 import SideBar from "../SideBar";
+import { InitializeSocket, socket } from "@/socketManager";
+import { realtimeUpdate } from "@/redux/features/chatMessages";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const dispatcher = useDispatch();
+  if (!socket) {
+    InitializeSocket();
+  }
+  socket?.on("receive_messages", (Data) => {
+    dispatcher(realtimeUpdate({ msg: Data }));
+  });
   return (
     <>
-      <div className="h-[100vh] grid grid-cols-6 gap-2">
+      <div className="h-[100vh] grid xl:grid-cols-5 grid-cols-3 gap-2">
         <SideBar />
-        <div className=" col-span-5 grid grid-rows-10  bg-neutral-200">
+        <div className=" xl:col-span-4 grid grid-rows-10  bg-neutral-200 col-span-2">
           <main className=" row-span-full">{children}</main>
         </div>
       </div>

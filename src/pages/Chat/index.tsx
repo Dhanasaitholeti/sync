@@ -1,12 +1,12 @@
+import InputMsg from "@/components/InputMsg";
 import RenderChats from "@/components/RenderChats";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 const Chat = () => {
   const { chatId } = useParams();
-
+  const allmesges = useSelector((state: any) => state.chatMsgs.msgs);
+  console.log(allmesges);
   const msgs =
     chatId &&
     useSelector((state: any) =>
@@ -27,19 +27,12 @@ const Chat = () => {
             <div className="bg-transparent row-span-13">
               <RenderChats chats={msgs} />
             </div>
-            <div className="bg-transparent flex items-center justify-evenly">
-              <Textarea
-                className="max-w-6xl resize-none h-[15%]"
-                placeholder="Enter your message"
-              />
-              <Button>Send</Button>
-            </div>
+            <InputMsg />
           </main>
         </>
       );
   };
 
-  console.log(msgs);
   return <>{renderChats()}</>;
 };
 
