@@ -4,6 +4,7 @@ import { emitMessage } from "@/socketManager";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { BsFillSendFill } from "react-icons/bs";
 
 const InputMsg = () => {
   const currentuser = useSelector((state: any) => state.user.user);
@@ -24,13 +25,15 @@ const InputMsg = () => {
   };
 
   return (
-    <div className="bg-transparent flex items-center justify-evenly">
+    <div className="bg-transparent flex items-center w-full">
       <Textarea
-        className="max-w-6xl resize-none h-[15%]"
+        className="w-[95%] resize-none"
         placeholder="Enter your message"
         onChange={(e) => handleOnChange(e)}
       />
-      <Button onClick={handleSendMsg}>Send</Button>
+      <Button className="w-[5%] h-[75%]" onClick={handleSendMsg}>
+        <BsFillSendFill size={20} />
+      </Button>
     </div>
   );
 };

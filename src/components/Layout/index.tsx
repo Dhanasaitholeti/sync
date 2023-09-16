@@ -16,7 +16,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   });
   return (
     <>
-      <div className="h-[100vh] grid xl:grid-cols-5 grid-cols-3 gap-2">
+      <div className="h-[100vh] grid xl:grid-cols-5 grid-cols-3 ">
         <SideBar />
         <div className=" xl:col-span-4 grid grid-rows-10  bg-neutral-200 col-span-2">
           <main className=" row-span-full">{children}</main>
