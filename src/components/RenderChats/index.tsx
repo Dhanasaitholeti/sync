@@ -12,14 +12,14 @@ const RenderChats: React.FC<chatMessageType> = ({ chats }) => {
 
   return (
     <>
-      <div className="relative">
+      <div className="flex flex-col space-y-2 p-4">
         {chats.map((msg) => (
           <Card
             className={`${
               msg.senderId == currentuser.userId
-                ? "bg-red-500 left-0"
-                : "bg-blue-500 right-0"
-            } max-w-lg`}
+                ? "self-end bg-blue-500 text-white rounded-lg p-2 flex items-center"
+                : "self-start bg-gray-200 rounded-lg p-2 flex items-center"
+            } shadow-2xl`}
           >
             <p>{msg.content}</p>
           </Card>

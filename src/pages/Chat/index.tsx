@@ -23,8 +23,8 @@ const Chat = () => {
     else
       return (
         <>
-          <main className="h-[100vh] grid grid-rows-14">
-            <div className="bg-transparent row-span-13">
+          <main className="h-[100vh] grid grid-rows-14 gap-2">
+            <div className="bg-transparent row-span-13 overflow-y-scroll">
               <RenderChats chats={msgs} />
             </div>
             <InputMsg />
