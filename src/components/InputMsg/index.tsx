@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
 import { emitMessage } from "@/socketManager";
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -18,6 +17,7 @@ const InputMsg = () => {
       senderId: currentuser.userId,
       chatId: chatIds[chatIds.length - 1],
     });
+    setMsg("");
   };
 
   const handleOnChange = (e: any) => {
@@ -25,13 +25,18 @@ const InputMsg = () => {
   };
 
   return (
-    <div className="bg-transparent flex items-center w-full">
-      <Textarea
-        className="w-[95%] resize-none"
-        placeholder="Enter your message"
+    <div className="p-4 flex items-center">
+      <input
+        type="text"
+        value={msg}
+        placeholder="Type your message..."
+        className="border border-gray-300 rounded-lg px-4 py-2 w-full"
         onChange={(e) => handleOnChange(e)}
       />
-      <Button className="w-[5%] h-[75%]" onClick={handleSendMsg}>
+      <Button
+        onClick={handleSendMsg}
+        className="ml-2 bg-blue-500 text-white px-4 py-2 rounded-lg"
+      >
         <BsFillSendFill size={20} />
       </Button>
     </div>

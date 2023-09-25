@@ -6,6 +6,8 @@ import Routegaurd from "./components/Routegaurd";
 import Home from "./pages/Home";
 import Layout from "./components/Layout";
 import Chat from "./pages/Chat";
+import SearchChat from "./components/SearchChat";
+import Profile from "./components/Profile";
 
 function App() {
   return (
@@ -15,6 +17,22 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route
+            path="/profile"
+            element={
+              <Layout>
+                <Profile />
+              </Layout>
+            }
+          />
+          <Route
+            path="/search"
+            element={
+              <Layout>
+                <SearchChat />
+              </Layout>
+            }
+          />
           <Route
             path="/home"
             element={

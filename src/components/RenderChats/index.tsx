@@ -15,6 +15,7 @@ const RenderChats: React.FC<chatMessageType> = ({ chats }) => {
       <div className="flex flex-col space-y-2 p-4">
         {chats.map((msg) => (
           <Card
+            key={msg.id}
             className={`${
               msg.senderId == currentuser.userId
                 ? "self-end bg-blue-500 text-white rounded-lg p-2 flex items-center"
