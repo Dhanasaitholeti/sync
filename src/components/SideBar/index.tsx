@@ -10,14 +10,10 @@ const SideBar = () => {
   const userChats = useSelector((state: any) => state.userChats.chats);
   return (
     <>
-      <aside className=" px-3 py-1 flex flex-col space-y-5 shadow-md max-h-[100vh]">
-        <div className="flex items-center justify-center h-[10vh]">
-          <img
-            src={Logo}
-            alt="Synk logo"
-            className=" h-16 md:h-24 drop-shadow-md hover:drop-shadow-2xl "
-          />
-          <p className="text-4xl sm:text-5xl md:text-6xl font-bold ">SYNK</p>
+      <aside className=" px-3 py-1 sidebar-bg-color flex flex-col space-y-5 shadow-md max-h-[100vh]">
+        <div className="flex justify-between items-center px-2 gap-5">
+          <div className="aspect-square rounded-full bg-blue-500 h-14"></div>
+          <Button className="w-full h-[5vh] bg-blue-500"></Button>
         </div>
         <div className="flex flex-col space-y-4">
           <Separator className="h-0.5 bg-gray-500" />

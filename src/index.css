@@ -18,3 +18,7 @@ body::-webkit-scrollbar {
     #b8a4c9
   );
 }
+
+.sidebar-bg-color {
+  background-color: #fefefa;
+}
