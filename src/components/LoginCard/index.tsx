@@ -56,11 +56,11 @@ const LoginCard = () => {
             <img src={logo} alt="Logo" className="aspect-square" />
           </div>
         </div>
-        <CardTitle className="text-center text-3xl font-bold">
+        <CardTitle className="text-center text-2xl font-bold">
           Log In to Synk
         </CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-col items-center justify-center gap-10">
+      <CardContent className="flex flex-col items-center justify-center gap-5">
         {loading ? (
           <h1>Loading......</h1>
         ) : (
@@ -104,14 +104,13 @@ const LoginCard = () => {
           </Button>
         </CardFooter>
       )}
-      <div className=" h-[15vh] flex items-end justify-center">
-        <p className="text-md text-center font-semibold">
-          Don't have account?
-          <Link to="/signup" className="text-blue-500">
-            signup
-          </Link>
-        </p>
-      </div>
+
+      <p className="text-md text-center font-semibold">
+        Don't have account?
+        <Link to="/signup" className="text-blue-500">
+          signup
+        </Link>
+      </p>
     </Card>
   );
 };

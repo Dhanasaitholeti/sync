@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Link } from "react-router-dom";
+import logo from "../../assets/logo.png";
 
 const labelStyles = "text-md font-bold";
 const fieldStyles = "grid w-full max-w-sm items-center gap-1.5";
@@ -33,13 +34,18 @@ const SignupCard = () => {
   console.log(signupData);
 
   return (
-    <Card className="w-full max-w-lg drop-shadow-2xl pt-10 pb-4">
+    <Card className="w-full max-w-lg h-[75vh] drop-shadow-2xl pt-10 pb-4">
       <CardHeader>
-        <CardTitle className="text-center text-3xl font-bold">
-          Create New Account
+        <div className="flex items-start justify-center">
+          <div className="bg-blue-500 h-20 w-20 rounded-full">
+            <img src={logo} alt="Logo" className="aspect-square" />
+          </div>
+        </div>
+        <CardTitle className="text-center text-2xl font-bold">
+          Sign up for Synk
         </CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-col items-center justify-center gap-10 ">
+      <CardContent className="flex flex-col items-center justify-center gap-5 ">
         <div className={fieldStyles}>
           <Label htmlFor="Name" className={labelStyles}>
             Name:
@@ -48,7 +54,7 @@ const SignupCard = () => {
             onChange={(e) => handleOnChange(e)}
             type="text"
             name="Name"
-            placeholder="haidi"
+            placeholder="Name"
             className="font-medium text-md"
           />
         </div>
@@ -61,7 +67,7 @@ const SignupCard = () => {
             onChange={(e) => handleOnChange(e)}
             type="text"
             name="Email"
-            placeholder="example@gmail.com"
+            placeholder="Email Address"
             className="font-medium text-md"
           />
         </div>
@@ -73,7 +79,7 @@ const SignupCard = () => {
             onChange={(e) => handleOnChange(e)}
             type="password"
             name="Password"
-            placeholder="*********"
+            placeholder="Password"
             className="font-medium text-md"
           />
         </div>
@@ -84,7 +90,7 @@ const SignupCard = () => {
           <Input
             type="password"
             name="passwd"
-            placeholder="**********"
+            placeholder="Confirm Password"
             className="font-medium text-md"
           />
         </div>
@@ -92,13 +98,13 @@ const SignupCard = () => {
       <CardFooter className="flex flex-col gap-5 items-center jusitfy-center">
         <Button
           onClick={handleSignupClick}
-          className="bg-green-400 w-[30%] hover:text- green-500 hover:border hover:font-semibold hover:border-green-800 hover:bg-transparent"
+          className="bg-blue-500 w-[70%] hover:text-blue-500 hover:border hover:font-bold hover:border-blue-400 hover:bg-transparent"
         >
           signup
         </Button>
-        <p className="text-lg font-semibold">
-          have account?
-          <Link to="/login" className="text-orange-600">
+        <p className="text-md font-semibold">
+          have an account?
+          <Link to="/login" className="text-blue-500">
             login
           </Link>
         </p>
