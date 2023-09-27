@@ -4,6 +4,8 @@ import { FiSearch } from "react-icons/fi";
 import { useEffect } from "react";
 import { updateSearchusers } from "@/redux/features/searchusers";
 import { useSelector, useDispatch } from "react-redux";
+import Cookies from "js-cookie";
+import SearchResultCard from "../SearchResultCard";
 
 const SearchChat = () => {
   const dispatcher = useDispatch();
@@ -12,7 +14,11 @@ const SearchChat = () => {
 
   useEffect(() => {
     const searchWithEmail = async () => {
-      const resp = await axios.get("http://localhost:8080/api/search");
+      const resp = await axios.get("http://localhost:8080/api/search", {
+        headers: {
+          Authorization: "Bearer " + Cookies.get("SynkToken"),
+        },
+      });
 
       dispatcher(updateSearchusers({ userlist: resp.data.Data, err: false }));
     };
@@ -30,7 +36,8 @@ const SearchChat = () => {
           // onClick={searchWithEmail}
         />
       </div>
-      <div>here is the chat cards appear that are searched</div>
+      <div>here is the chat cards appear that are searched</div>\
+      <SearchResultCard CardList={searchUsers} />
     </main>
   );
 };

@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import logo from "../../assets/logo.png";
 
 const labelStyles = "text-md font-bold";
 const fieldStyles = "grid w-full max-w-sm items-center gap-1.5";
@@ -48,10 +49,15 @@ const LoginCard = () => {
     }
   };
   return (
-    <Card className="w-full max-w-lg drop-shadow-2xl pt-10 pb-4">
+    <Card className="w-full max-w-lg h-[75vh] drop-shadow-2xl pt-10 pb-4">
       <CardHeader>
+        <div className="flex items-start justify-center">
+          <div className="bg-blue-500 h-20 w-20 rounded-full">
+            <img src={logo} alt="Logo" className="aspect-square" />
+          </div>
+        </div>
         <CardTitle className="text-center text-3xl font-bold">
-          Login Your Account
+          Log In to Synk
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col items-center justify-center gap-10">
@@ -67,7 +73,7 @@ const LoginCard = () => {
                 onChange={(e) => handleOnChange(e)}
                 type="text"
                 name="Email"
-                placeholder="example@gmail.com"
+                placeholder="Email address"
                 className="font-medium text-md"
               />
             </div>
@@ -79,7 +85,7 @@ const LoginCard = () => {
                 onChange={(e) => handleOnChange(e)}
                 type="password"
                 name="Password"
-                placeholder="******************"
+                placeholder="Password"
                 className="font-medium text-md"
               />
             </div>
@@ -91,19 +97,21 @@ const LoginCard = () => {
           <Button
             onClick={handleLoginSubmit}
             className={
-              "bg-green-400 w-[30%] hover:text-green-500 hover:border hover:font-semibold hover:border-green-800 hover:bg-transparent"
+              "bg-blue-500 w-[70%] hover:text-blue-500 hover:border hover:font-bold hover:border-blue-400 hover:bg-transparent"
             }
           >
             Login
           </Button>
-          <p className="text-lg font-semibold">
-            Don't have account?
-            <Link to="/signup" className="text-orange-600">
-              signup
-            </Link>
-          </p>
         </CardFooter>
       )}
+      <div className=" h-[15vh] flex items-end justify-center">
+        <p className="text-md text-center font-semibold">
+          Don't have account?
+          <Link to="/signup" className="text-blue-500">
+            signup
+          </Link>
+        </p>
+      </div>
     </Card>
   );
 };

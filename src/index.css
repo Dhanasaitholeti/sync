@@ -9,3 +9,12 @@ body {
 body::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
 }
+
+.bg-custom-gradient {
+  background-image: linear-gradient(
+    to bottom right,
+    #c9def4 20%,
+    #f5ccd4 40%,
+    #b8a4c9
+  );
+}
