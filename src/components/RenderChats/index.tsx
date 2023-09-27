@@ -8,7 +8,6 @@ interface chatMessageType {
 
 const RenderChats: React.FC<chatMessageType> = ({ chats }) => {
   const currentuser = useSelector((state: any) => state.user.user);
-  // console.log(currentuser);
 
   return (
     <>
@@ -18,8 +17,8 @@ const RenderChats: React.FC<chatMessageType> = ({ chats }) => {
             key={msg.id}
             className={`${
               msg.senderId == currentuser.userId
-                ? "self-end bg-blue-500 text-white rounded-lg p-2 flex items-center"
-                : "self-start bg-gray-200 rounded-lg p-2 flex items-center"
+                ? "self-end bg-blue-500 text-white rounded-br-none p-2 flex items-center"
+                : "self-start sidebar-bg-color rounded-tl-none p-2 flex items-center"
             } shadow-2xl`}
           >
             <p>{msg.content}</p>

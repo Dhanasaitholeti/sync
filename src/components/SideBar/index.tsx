@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 import ChatSkeleton from "../Skeletons/ChatSkeleton";
 import ChatCard from "../ChatCard";
-import Logo from "@/assets/logo.png";
+import { CgProfile } from "react-icons/cg";
+import { HiUserAdd } from "react-icons/hi";
 import { Separator } from "../ui/separator";
 import { Button } from "../ui/button";
 import { Link } from "react-router-dom";
@@ -12,9 +13,15 @@ const SideBar = () => {
     <>
       <aside className=" px-3 py-1 sidebar-bg-color flex flex-col space-y-5 shadow-md max-h-[100vh]">
         <div className="flex justify-between items-center px-2 gap-5">
-          <div className="aspect-square rounded-full bg-blue-500 h-14"></div>
-          <Button className="w-full h-[5vh] bg-blue-500"></Button>
+          <div className="aspect-square rounded-full bg-blue-500 h-14 flex items-center justify-center text-white hover:bg-transparent hover:border hover:border-blue-400 hover:text-blue-400">
+            <CgProfile size={32} />
+          </div>
+          <Button className="w-full h-[5vh] bg-blue-500 hover:bg-transparent hover:border hover:border-blue-200 hover:text-blue-400 space-x-2">
+            <span className="text-lg">New Chat</span>
+            <HiUserAdd size={24} />
+          </Button>
         </div>
+
         <div className="flex flex-col space-y-4">
           <Separator className="h-0.5 bg-gray-500" />
           <div className="flex items-baseline justify-around">
@@ -26,6 +33,7 @@ const SideBar = () => {
             </Link>
           </div>
         </div>
+
         <div className="space-y-5 ">
           <p className="mb-5 font-semibold">Your Chats:</p>
           <div className="overflow-y-scroll max-h-[70vh] min-h-[45vh]">
