@@ -36,7 +36,7 @@ const SearchChat = () => {
           // onClick={searchWithEmail}
         />
       </div>
-      <div>here is the chat cards appear that are searched</div>\
+
       <SearchResultCard CardList={searchUsers} />
     </main>
   );

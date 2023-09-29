@@ -16,9 +16,14 @@ const SearchResult: React.FC<CardsProps> = ({ CardList }) => {
     <div>
       {CardList &&
         CardList.map((card) => (
-          <Card key={card.id}>
-            <p>{card.Name}</p>
-            <p>{card.Email}</p>
+          <Card
+            key={card.id}
+            className="flex justify-between items-center px-5 py-3"
+          >
+            <div>
+              <p>{card.Name}</p>
+              <p>{card.Email}</p>
+            </div>
             <Button>Chat</Button>
           </Card>
         ))}
