@@ -19,7 +19,7 @@ const RenderChats: React.FC<chatMessageType> = ({ chats }) => {
               msg.senderId == currentuser.userId
                 ? "self-end bg-blue-500 text-white rounded-br-none p-2 flex items-center"
                 : "self-start sidebar-bg-color rounded-tl-none p-2 flex items-center"
-            } shadow-2xl`}
+            }`}
           >
             <p>{msg.content}</p>
           </Card>

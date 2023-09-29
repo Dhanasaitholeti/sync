@@ -26,6 +26,7 @@ module.exports = {
       gridRow: {
         "span-9": "span 9 / span 9",
         "span-11": "span 11 / span 11",
+        "span-12": "span 12 / span 12",
         "span-13": "span 13 / span 13",
       },
       keyframes: {

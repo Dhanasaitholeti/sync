@@ -24,7 +24,10 @@ const Chat = () => {
       return (
         <>
           <main className="h-[100vh] grid grid-rows-14 gap-2">
-            <div className="bg-transparent row-span-13 overflow-y-scroll">
+            <div className=" shadow-lg sidebar-bg-color text-lg lg:text-2xl align-middle font-bold text-center py-4">
+              Synk - connect with your friends
+            </div>
+            <div className=" bg-transparent row-span-12 overflow-y-scroll">
               <RenderChats chats={msgs} />
             </div>
             <InputMsg />
