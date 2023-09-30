@@ -1,3 +1,4 @@
+import { Avatar, AvatarFallback } from "@radix-ui/react-avatar";
 import { Button } from "../ui/button";
 import { Card } from "../ui/card";
 
@@ -20,11 +21,18 @@ const SearchResult: React.FC<CardsProps> = ({ CardList }) => {
             key={card.id}
             className="flex justify-between items-center px-5 py-3 border-blue-500 group"
           >
-            <div>
-              <p>{card.Name}</p>
-              <p>{card.Email}</p>
+            <div className="flex gap-2 items-center justify-center">
+              <div className="aspect-square h-[50px] bg-blue-500 rounded-full flex items-center justify-center text-2xl text-white font-semibold group-hover:bg-white group-hover:text-blue-600 border border-blue-600">
+                {card.Name[0]}
+              </div>
+              <div>
+                <p className="font-extrabold">{card.Name}</p>
+                <p className="font-medium">{card.Email}</p>
+              </div>
             </div>
-            <Button className="bg-blue-500 hover:bg-blue-300">Chat</Button>
+            <Button className="bg-blue-500 hover:bg-blue-400 hover:bg-transparent border border-blue-500 hover:text-blue-500 hover:font-semibold">
+              Chat
+            </Button>
           </Card>
         ))}
     </div>
