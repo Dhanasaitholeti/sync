@@ -16,16 +16,16 @@ const ChatCard: React.FC<ChatsDataprops> = ({ Chatlist }) => {
     id = location.pathname.split("/")[2];
   }
   return (
-    <>
+    <div className="flex flex-col gap-2">
       {Chatlist.map((chat) => (
         <Link to={`/chat/${chat.ChatId}`} key={chat.ChatId}>
           <Card
             className={`${
-              id === chat.ChatId && "bg-blue-400"
-            } flex align-center py-3 px-3 group hover:cursor-pointer `}
+              id === chat.ChatId && "bg-blue-200"
+            } flex align-center py-3 px-3 group rounded-lg hover:cursor-pointer border-2`}
           >
             <Avatar className="h-[40px] w-[40px]">
-              <AvatarFallback className="bg-neutral-700 text-slate-50 font-bold text-2xl group-hover:bg-neutral-400 group-hover:text-slate-950">
+              <AvatarFallback className="bg-blue-700 text-slate-50 font-bold text-2xl group-hover:bg-white group-hover:text-blue-700">
                 {chat.Chatpartner[0]}
               </AvatarFallback>
             </Avatar>
@@ -36,7 +36,7 @@ const ChatCard: React.FC<ChatsDataprops> = ({ Chatlist }) => {
           </Card>
         </Link>
       ))}
-    </>
+    </div>
   );
 };
 

@@ -5,6 +5,7 @@ import { CgProfile } from "react-icons/cg";
 import { HiUserAdd } from "react-icons/hi";
 import { Button } from "../ui/button";
 import { useNavigate } from "react-router-dom";
+import { Separator } from "../ui/separator";
 
 const SideBar = () => {
   const navigate = useNavigate();
@@ -36,9 +37,11 @@ const SideBar = () => {
           </Button>
         </div>
 
+        <Separator />
+
         <div className="space-y-5 ">
-          <p className="mb-5 font-semibold">Your Chats:</p>
-          <div className="overflow-y-scroll max-h-[70vh] min-h-[45vh]">
+          {/* <p className="mb-5 font-semibold">Your Chats:</p> */}
+          <div className="overflow-y-scroll max-h-[70vh] min-h-[60vh]">
             {userChats ? <ChatCard Chatlist={userChats} /> : <ChatSkeleton />}
           </div>
         </div>

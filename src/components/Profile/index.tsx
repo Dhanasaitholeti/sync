@@ -10,13 +10,14 @@ import { CgProfile } from "react-icons/cg";
 import { Button } from "../ui/button";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import { socket } from "../../socketManager";
 
 const Profile = () => {
   const userData = useSelector((state: any) => state.user.user);
-  console.log(userData);
   const navigate = useNavigate();
   const handleLogout = () => {
     Cookies.remove("SynkToken");
+    socket?.close();
     navigate("/login");
   };
   return (
