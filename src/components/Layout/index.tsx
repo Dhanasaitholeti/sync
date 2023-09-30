@@ -8,12 +8,14 @@ interface LayoutProps {
 }
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const dispatcher = useDispatch();
+
   if (!socket) {
     InitializeSocket();
   }
   socket?.on("receive_messages", (Data) => {
     dispatcher(realtimeUpdate({ msg: Data }));
   });
+
   return (
     <>
       <div className="h-[100vh] grid xl:grid-cols-5 grid-cols-3 ">

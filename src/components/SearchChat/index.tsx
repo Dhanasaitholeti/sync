@@ -27,14 +27,14 @@ const SearchChat = () => {
   }, []);
 
   return (
-    <main className="container py-2 max-w-4xl space-y-5">
+    <main className="container py-2 max-w-4xl space-y-5 rounded-lg">
       <div className="flex gap-2">
         <Input placeholder="Search With Email" />
-        <FiSearch
+        {/* <FiSearch
           size={32}
           className="cursor-pointer"
           // onClick={searchWithEmail}
-        />
+        /> */}
       </div>
 
       <SearchResultCard CardList={searchUsers} />

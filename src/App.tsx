@@ -1,5 +1,4 @@
-import { Routes, Route } from "react-router-dom";
-import LandingPage from "./components/LandingPage";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Routegaurd from "./components/Routegaurd";
@@ -14,7 +13,7 @@ function App() {
     <>
       <Routes>
         <Route element={<Routegaurd />}>
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route

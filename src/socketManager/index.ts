@@ -23,6 +23,7 @@ const InitializeSocket = () => {
     });
 
     socket.on("message", (message: any) => {
+      //testing purpose
       console.log("Got the data", message);
     });
 
@@ -53,6 +54,7 @@ const InitializeSocket = () => {
 
     socket.on("disconnect", () => {
       console.log("Disconnect from socker server");
+      socket = null;
     });
   }
 };

@@ -11,13 +11,19 @@ import { Button } from "../ui/button";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { socket } from "../../socketManager";
+import { useDispatch } from "react-redux";
+import { updateChats } from "@/redux/features/userChats";
+import { updateMsgs } from "@/redux/features/chatMessages";
 
 const Profile = () => {
+  const dispatcher = useDispatch();
   const userData = useSelector((state: any) => state.user.user);
   const navigate = useNavigate();
   const handleLogout = () => {
     Cookies.remove("SynkToken");
     socket?.close();
+    dispatcher(updateChats({ chats: null, err: false }));
+    dispatcher(updateMsgs({ msgs: null, err: false }));
     navigate("/login");
   };
   return (
@@ -47,7 +53,7 @@ const Profile = () => {
               </p>
             </Card>
           </CardContent>
-          <CardFooter className="flex  gap-5">
+          <CardFooter className="flex gap-5">
             <div className="bg-yellow-500 w-full h-14 rounded-xl"></div>
             <Button className="w-full" onClick={handleLogout}>
               Logout
