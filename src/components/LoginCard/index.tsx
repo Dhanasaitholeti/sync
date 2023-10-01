@@ -41,7 +41,6 @@ const LoginCard = () => {
         Credential
       );
       Cookies.set("SynkToken", resp.data.token);
-      setLoading(false);
       navigate("/home");
     } catch (error) {
       setLoading(false);

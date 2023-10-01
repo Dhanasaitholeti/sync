@@ -4,11 +4,12 @@ import ChatCard from "../ChatCard";
 import { CgProfile } from "react-icons/cg";
 import { HiUserAdd } from "react-icons/hi";
 import { Button } from "../ui/button";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Separator } from "../ui/separator";
 
 const SideBar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleNewChatClick = () => {
     navigate("/search");
@@ -24,13 +25,21 @@ const SideBar = () => {
         <div className="flex justify-between items-center px-2 gap-5">
           <div
             onClick={handleProfileClick}
-            className="aspect-square cursor-pointer rounded-full bg-blue-500 h-14 flex items-center justify-center text-white hover:bg-transparent hover:border hover:border-blue-400 hover:text-blue-400"
+            className={`aspect-square cursor-pointer rounded-full bg-blue-500 h-14 flex items-center justify-center text-white hover:bg-transparent hover:border hover:border-blue-400 hover:text-blue-400 ${
+              location.pathname === "/profile" &&
+              "bg-transparent text-blue-600  border-blue-400 border"
+            }`}
           >
             <CgProfile size={32} />
           </div>
           <Button
             onClick={handleNewChatClick}
-            className="w-full h-[5vh] bg-blue-500 hover:bg-transparent hover:border hover:border-blue-200 hover:text-blue-400 space-x-2"
+            className={`w-full h-[5vh] bg-blue-500 hover:bg-transparent hover:border hover:border-blue-200 hover:text-blue-400 space-x-2 
+            ${
+              location.pathname === "/search" &&
+              "bg-transparent text-blue-600 border-blue-400 border"
+            }
+            `}
           >
             <span className="text-lg">New Chat</span>
             <HiUserAdd size={24} />

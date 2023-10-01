@@ -26,8 +26,8 @@ const SearchResult: React.FC<CardsProps> = ({ CardList }) => {
                 {card.Name[0]}
               </div>
               <div>
-                <p className="font-extrabold">{card.Name}</p>
-                <p className="font-medium">{card.Email}</p>
+                <p className="font-extrabold text-slate-800">{card.Name}</p>
+                <p className="font-medium text-gray-800">{card.Email}</p>
               </div>
             </div>
             <Button className="bg-blue-500 hover:bg-blue-400 hover:bg-transparent border border-blue-500 hover:text-blue-500 hover:font-semibold">

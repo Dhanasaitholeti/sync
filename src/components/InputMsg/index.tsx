@@ -4,14 +4,30 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { BsFillSendFill } from "react-icons/bs";
+import { realtimeUpdate } from "@/redux/features/chatMessages";
+import { useDispatch } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
 
 const InputMsg = () => {
+  const dispatcher = useDispatch();
   const currentuser = useSelector((state: any) => state.user.user);
+  console.log(currentuser);
   const location = useLocation();
   const chatIds = location.pathname.split("/");
   const [msg, setMsg] = useState("");
 
+  const createMsgObj = () => {
+    return {
+      id: uuidv4(),
+      content: msg,
+      senderId: currentuser.userId,
+      chatId: chatIds[chatIds.length - 1],
+    };
+  };
+
   const handleSendMsg = () => {
+    const redmsg = createMsgObj();
+    dispatcher(realtimeUpdate({ msg: redmsg }));
     emitMessage({
       content: msg,
       senderId: currentuser.userId,

@@ -35,27 +35,19 @@ const Profile = () => {
               <CgProfile size={32} />
             </div>
           </CardHeader>
-          <CardContent className="flex items-center justify-center">
-            <Card className="max-w-2xl w-full">
-              <CardTitle>Name</CardTitle>
-              <p className="text-2xl opacity-75 font-bold">
-                {userData.userName}
-              </p>
-            </Card>
-            <Card className="max-w-2xl w-full overflow-x-hidden">
-              <CardTitle>Id</CardTitle>
-              <p className="text-2xl opacity-75 font-bold">{userData.userId}</p>
-            </Card>
-            <Card className="max-w-2xl w-full overflow-x-hidden">
-              <CardTitle>Email</CardTitle>
-              <p className="text-2xl opacity-75 font-bold">
-                {userData.userEmail}
-              </p>
-            </Card>
+          <CardContent className="flex items-center justify-center flex-col">
+            <p className="text-2xl  font-bold">{userData.userName}</p>
+            <p className="text-xl opacity-75 font-bold">{userData.userId}</p>
+            <p className="text-2xl  font-bold">{userData.userEmail}</p>
           </CardContent>
-          <CardFooter className="flex gap-5">
-            <div className="bg-yellow-500 w-full h-14 rounded-xl"></div>
-            <Button className="w-full" onClick={handleLogout}>
+          <CardFooter className="flex flex-col gap-5 ">
+            <Button className="w-full max-w-md bg-blue-400 hover:bg-transparent hover:text-blue-600 hover:font-bold border border-blue-400">
+              Change theme
+            </Button>
+            <Button
+              className="w-full max-w-md bg-blue-400 hover:bg-transparent hover:text-blue-600 hover:font-bold border border-blue-400"
+              onClick={handleLogout}
+            >
               Logout
             </Button>
           </CardFooter>
