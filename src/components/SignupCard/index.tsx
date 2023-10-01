@@ -44,6 +44,7 @@ const SignupCard = () => {
       console.log(error);
       toast({
         title: "unable to signup. Try Again",
+        variant: "destructive",
       });
     }
   };
