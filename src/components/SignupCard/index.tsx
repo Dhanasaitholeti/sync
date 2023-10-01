@@ -11,11 +11,15 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import axios from "axios";
+import { useToast } from "../ui/use-toast";
+import { log } from "console";
 
 const labelStyles = "text-md font-bold";
 const fieldStyles = "grid w-full max-w-sm items-center gap-1.5";
 
 const SignupCard = () => {
+  const { toast } = useToast();
   const [signupData, setSignupData] = useState({
     Name: "",
     Email: "",
@@ -29,7 +33,20 @@ const SignupCard = () => {
     });
   };
 
-  const handleSignupClick = () => {};
+  const handleSignupClick = async () => {
+    try {
+      await axios.post("http://localhost:8080/user/signup", signupData);
+      toast({
+        title: "Signup successful",
+        description: "Now try to login",
+      });
+    } catch (error) {
+      console.log(error);
+      toast({
+        title: "unable to signup. Try Again",
+      });
+    }
+  };
 
   console.log(signupData);
 
