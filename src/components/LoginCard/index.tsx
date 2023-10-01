@@ -47,6 +47,7 @@ const LoginCard = () => {
       console.log(error);
     }
   };
+
   return (
     <Card className="w-full max-w-lg h-[75vh] drop-shadow-2xl pt-10 pb-4">
       <CardHeader>

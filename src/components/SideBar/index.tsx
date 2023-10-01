@@ -19,25 +19,28 @@ const SideBar = () => {
   };
 
   const userChats = useSelector((state: any) => state.userChats.chats);
+
   return (
     <>
       <aside className=" px-2 py-1 sidebar-bg-color flex flex-col space-y-5 shadow-md max-h-[100vh]">
         <div className="flex justify-between items-center px-2 gap-5">
           <div
             onClick={handleProfileClick}
-            className={`aspect-square cursor-pointer rounded-full bg-blue-500 h-14 flex items-center justify-center text-white hover:bg-transparent hover:border hover:border-blue-400 hover:text-blue-400 ${
-              location.pathname === "/profile" &&
-              "bg-transparent text-blue-600  border-blue-400 border"
+            className={`aspect-square cursor-pointer rounded-full h-14 flex items-center justify-center border border-blue-400 hover:bg-transparent  hover:text-blue-400 ${
+              location.pathname === "/profile"
+                ? "bg-transparent text-blue-600"
+                : " bg-blue-500  text-white"
             }`}
           >
             <CgProfile size={32} />
           </div>
           <Button
             onClick={handleNewChatClick}
-            className={`w-full h-[5vh] bg-blue-500 hover:bg-transparent hover:border hover:border-blue-200 hover:text-blue-400 space-x-2 
+            className={`w-full h-[5vh] bg-blue-500 border border-blue-400 space-x-2  hover:bg-transparent hover:text-blue-400  
             ${
-              location.pathname === "/search" &&
-              "bg-transparent text-blue-600 border-blue-400 border"
+              location.pathname === "/search"
+                ? "bg-transparent text-blue-600 "
+                : "bg-blue-500 text-white"
             }
             `}
           >
@@ -49,7 +52,6 @@ const SideBar = () => {
         <Separator />
 
         <div className="space-y-5 ">
-          {/* <p className="mb-5 font-semibold">Your Chats:</p> */}
           <div className="overflow-y-scroll max-h-[70vh] min-h-[60vh]">
             {userChats ? <ChatCard Chatlist={userChats} /> : <ChatSkeleton />}
           </div>

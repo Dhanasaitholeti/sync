@@ -11,7 +11,6 @@ import { v4 as uuidv4 } from "uuid";
 const InputMsg = () => {
   const dispatcher = useDispatch();
   const currentuser = useSelector((state: any) => state.user.user);
-  console.log(currentuser);
   const location = useLocation();
   const chatIds = location.pathname.split("/");
   const [msg, setMsg] = useState("");

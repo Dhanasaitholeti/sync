@@ -8,6 +8,7 @@ interface ChatsDataprops {
     Chatpartner: string;
   }[];
 }
+
 const ChatCard: React.FC<ChatsDataprops> = ({ Chatlist }) => {
   const location = useLocation();
   let id: string | null;
@@ -15,6 +16,7 @@ const ChatCard: React.FC<ChatsDataprops> = ({ Chatlist }) => {
   if (location.pathname.startsWith("/chat")) {
     id = location.pathname.split("/")[2];
   }
+
   return (
     <div className="flex flex-col gap-2">
       {Chatlist.map((chat) => (

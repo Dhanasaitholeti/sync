@@ -19,6 +19,7 @@ const Profile = () => {
   const dispatcher = useDispatch();
   const userData = useSelector((state: any) => state.user.user);
   const navigate = useNavigate();
+
   const handleLogout = () => {
     Cookies.remove("SynkToken");
     socket?.close();
@@ -26,6 +27,7 @@ const Profile = () => {
     dispatcher(updateMsgs({ msgs: null, err: false }));
     navigate("/login");
   };
+
   return (
     <main className="container pt-[5%] max-w-4xl">
       {userData && (
