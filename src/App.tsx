@@ -7,10 +7,12 @@ import Layout from "./components/Layout";
 import Chat from "./pages/Chat";
 import SearchChat from "./components/SearchChat";
 import Profile from "./components/Profile";
+import { Toaster } from "./components/ui/toaster";
 
 function App() {
   return (
     <>
+      <Toaster />
       <Routes>
         <Route element={<Routegaurd />}>
           <Route path="/" element={<Navigate to="/login" replace />} />

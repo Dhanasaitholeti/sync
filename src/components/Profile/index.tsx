@@ -1,11 +1,5 @@
 import { useSelector } from "react-redux";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardFooter,
-  CardTitle,
-} from "../ui/card";
+import { Card, CardHeader, CardContent, CardFooter } from "../ui/card";
 import { CgProfile } from "react-icons/cg";
 import { Button } from "../ui/button";
 import Cookies from "js-cookie";
@@ -14,8 +8,11 @@ import { socket } from "../../socketManager";
 import { useDispatch } from "react-redux";
 import { updateChats } from "@/redux/features/userChats";
 import { updateMsgs } from "@/redux/features/chatMessages";
+import { useToast } from "../ui/use-toast";
+import { title } from "process";
 
 const Profile = () => {
+  const { toast } = useToast();
   const dispatcher = useDispatch();
   const userData = useSelector((state: any) => state.user.user);
   const navigate = useNavigate();
@@ -25,6 +22,9 @@ const Profile = () => {
     socket?.close();
     dispatcher(updateChats({ chats: null, err: false }));
     dispatcher(updateMsgs({ msgs: null, err: false }));
+    toast({
+      title: "logged out",
+    });
     navigate("/login");
   };
 

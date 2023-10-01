@@ -14,11 +14,14 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import logo from "../../assets/logo.png";
+import { useToast } from "../ui/use-toast";
 
+//common styles
 const labelStyles = "text-md font-bold";
 const fieldStyles = "grid w-full max-w-sm items-center gap-1.5";
 
 const LoginCard = () => {
+  const { toast } = useToast();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [Credential, setCredential] = useState({
@@ -40,11 +43,19 @@ const LoginCard = () => {
         "http://localhost:8080/user/login",
         Credential
       );
+      toast({
+        title: "Logged in Successfully",
+        description: "Chat with your friends",
+      });
       Cookies.set("SynkToken", resp.data.token);
       navigate("/home");
     } catch (error) {
       setLoading(false);
-      console.log(error);
+      toast({
+        title: "Login Failed",
+        description: "please once check your credentials",
+        variant: "destructive",
+      });
     }
   };
 
