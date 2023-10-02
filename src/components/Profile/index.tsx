@@ -31,7 +31,7 @@ const Profile = () => {
   return (
     <main className="container pt-[5%] max-w-4xl">
       {userData && (
-        <Card className="h-[75vh]">
+        <Card className="h-[75vh] sidebar-bg-color">
           <CardHeader className="flex items-center justify-center">
             <div className="aspect-square h-24 cursor-pointer rounded-full bg-blue-500  flex items-center justify-center text-white hover:bg-transparent hover:border hover:border-blue-400 hover:text-blue-400">
               <CgProfile size={32} />

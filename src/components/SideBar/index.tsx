@@ -6,6 +6,7 @@ import { HiUserAdd } from "react-icons/hi";
 import { Button } from "../ui/button";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Separator } from "../ui/separator";
+import { RootState } from "@/redux/store";
 
 const SideBar = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const SideBar = () => {
     navigate("/profile");
   };
 
-  const userChats = useSelector((state: any) => state.userChats.chats);
+  const userChats = useSelector((state: RootState) => state.userChats.chats);
 
   return (
     <>

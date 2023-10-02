@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import chatReducer from "./features/userChats";
+import chatReducer, { chatStateType } from "./features/userChats";
 import msgReducer from "./features/chatMessages";
-import userReducer from "./features/userData";
-import searchUserReducer from "./features/searchusers";
+import userReducer, { userDataStateType } from "./features/userData";
+import searchUserReducer, { searchUserStateType } from "./features/searchusers";
 export const store = configureStore({
   reducer: {
     user: userReducer,
@@ -12,5 +12,12 @@ export const store = configureStore({
   },
 });
 
-export type RootState = ReturnType<typeof store.getState>;
+// export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+export type RootState = {
+  user: userDataStateType; // Use the type from user.ts
+  userChats: chatStateType;
+  // chatMsgs: ChatMsgsState; // Define types for other slices too
+  searchUser: searchUserStateType;
+};

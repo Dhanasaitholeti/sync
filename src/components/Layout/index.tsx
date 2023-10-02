@@ -13,6 +13,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     InitializeSocket();
   }
   socket?.on("receive_messages", (Data) => {
+    console.log(Data);
     dispatcher(realtimeUpdate({ msg: Data }));
   });
 

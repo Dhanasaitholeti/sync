@@ -5,10 +5,11 @@ import { updateSearchusers } from "@/redux/features/searchusers";
 import { useSelector, useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 import SearchResultCard from "../SearchResultCard";
+import { RootState } from "@/redux/store";
 
 const SearchChat = () => {
   const dispatcher = useDispatch();
-  const searchUsers = useSelector((state: any) => state.searchUser.users);
+  const searchUsers = useSelector((state: RootState) => state.searchUser.users);
 
   useEffect(() => {
     const searchWithEmail = async () => {
@@ -17,7 +18,7 @@ const SearchChat = () => {
           Authorization: "Bearer " + Cookies.get("SynkToken"),
         },
       });
-
+      console.log(resp.data.Data);
       dispatcher(updateSearchusers({ userlist: resp.data.Data, err: false }));
     };
 
@@ -30,7 +31,7 @@ const SearchChat = () => {
         <Input placeholder="Search With Email" />
       </div>
 
-      <SearchResultCard CardList={searchUsers} />
+      {searchUsers && <SearchResultCard CardList={searchUsers} />}
     </main>
   );
 };

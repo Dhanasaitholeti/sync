@@ -2,13 +2,10 @@ import axios from "axios";
 import { Button } from "../ui/button";
 import { Card } from "../ui/card";
 import { useSelector } from "react-redux";
+import { searchUsersType } from "@/redux/features/searchusers";
 
 interface CardsProps {
-  CardList: {
-    id: string;
-    Email: string;
-    Name: string;
-  }[];
+  CardList: searchUsersType[];
 }
 
 const SearchResult: React.FC<CardsProps> = ({ CardList }) => {
@@ -31,7 +28,7 @@ const SearchResult: React.FC<CardsProps> = ({ CardList }) => {
   };
 
   return (
-    <div className="max-w-5xl rounded-lg h-[90vh] px-14 py-5 bg-gray-50 flex flex-col gap-4">
+    <div className="max-w-5xl rounded-lg h-[90vh] px-14 py-5 sidebar-bg-color flex flex-col gap-4">
       {CardList &&
         CardList.map((card) => (
           <Card
