@@ -28,6 +28,7 @@ const InitializeSocket = () => {
     });
 
     socket.on("chatsData", (chatsData) => {
+      console.log(chatsData);
       dispatcher(
         updateUser({
           user: {
@@ -48,6 +49,7 @@ const InitializeSocket = () => {
       const extractedchats = chatsData.chats.map((each: any) => ({
         ChatId: each.id,
         Chatpartner: each.members[0].Name,
+        ChatpartnerId: each.members[0].id,
       }));
       dispatcher(updateChats({ chats: extractedchats, err: false })); //dispatching action alogn with payload to update data in store
     });

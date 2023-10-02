@@ -1,5 +1,7 @@
+import axios from "axios";
 import { Button } from "../ui/button";
 import { Card } from "../ui/card";
+import { useSelector } from "react-redux";
 
 interface CardsProps {
   CardList: {
@@ -10,10 +12,26 @@ interface CardsProps {
 }
 
 const SearchResult: React.FC<CardsProps> = ({ CardList }) => {
-  console.log(CardList);
+  const userData = useSelector((state: any) => state.user.user);
+  const userChats = useSelector((state: any) => state.userChats.chats);
+  console.log(userChats);
+
+  const checkChatExists = (chatPartnerrId: string) => {
+    for (let i of userChats) {
+      if (i.ChatpartnerId === chatPartnerrId) return true;
+    }
+    return false;
+  };
+
+  const handleCreateChat = (user2Id: string) => {
+    axios.post("http://localhost:8080/api/createchat", {
+      user1Id: userData.userId,
+      user2Id,
+    });
+  };
 
   return (
-    <div className="max-w-5xl h-[90vh] px-10 py-5 bg-gray-50 flex flex-col gap-4">
+    <div className="max-w-5xl rounded-lg h-[90vh] px-14 py-5 bg-gray-50 flex flex-col gap-4">
       {CardList &&
         CardList.map((card) => (
           <Card
@@ -29,9 +47,14 @@ const SearchResult: React.FC<CardsProps> = ({ CardList }) => {
                 <p className="font-medium text-gray-800">{card.Email}</p>
               </div>
             </div>
-            <Button className="bg-blue-500 hover:bg-blue-400 hover:bg-transparent border border-blue-500 hover:text-blue-500 hover:font-semibold">
-              Chat
-            </Button>
+            {!checkChatExists(card.id) && (
+              <Button
+                onClick={() => handleCreateChat(card.id)}
+                className="bg-blue-500 hover:bg-blue-400 hover:bg-transparent border border-blue-500 hover:text-blue-500 hover:font-semibold"
+              >
+                Chat
+              </Button>
+            )}
           </Card>
         ))}
     </div>
