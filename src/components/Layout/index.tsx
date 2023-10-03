@@ -1,7 +1,8 @@
 import { useDispatch } from "react-redux";
 import SideBar from "../SideBar";
 import { InitializeSocket, socket } from "@/socketManager";
-import { realtimeUpdate } from "@/redux/features/chatMessages";
+import { realtimeUpdate as msgupdate } from "@/redux/features/chatMessages";
+import { realtimeUpdate as chatupdate } from "@/redux/features/userChats";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -14,7 +15,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   }
   socket?.on("receive_messages", (Data) => {
     console.log(Data);
-    dispatcher(realtimeUpdate({ msg: Data }));
+    dispatcher(msgupdate({ msg: Data }));
+  });
+
+  socket?.on("newchat", (Data) => {
+    dispatcher(chatupdate({ chat: Data, err: false }));
   });
 
   return (

@@ -28,9 +28,16 @@ export const chatSlice = createSlice({
       state.chats = action.payload.chats;
       state.err = action.payload.err;
     },
+    realtimeUpdate: (
+      state,
+      action: { payload: { chat: chatType; err: Boolean } }
+    ) => {
+      state.chats?.push(action.payload.chat);
+      state.err = action.payload.err;
+    },
   },
 });
 
-export const { updateChats } = chatSlice.actions;
+export const { updateChats, realtimeUpdate } = chatSlice.actions;
 
 export default chatSlice.reducer;

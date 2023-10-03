@@ -63,8 +63,13 @@ const InitializeSocket = () => {
   }
 };
 
+//has to update the any with appropriate type anotattion
 const emitMessage = (message: any) => {
   socket?.emit("sendMessage", message);
 };
 
-export { socket, InitializeSocket, emitMessage };
+const createchat = (Data: any) => {
+  socket?.emit("createChat", Data);
+};
+
+export { socket, InitializeSocket, emitMessage, createchat };

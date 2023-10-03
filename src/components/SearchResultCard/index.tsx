@@ -3,6 +3,7 @@ import { Button } from "../ui/button";
 import { Card } from "../ui/card";
 import { useSelector } from "react-redux";
 import { searchUsersType } from "@/redux/features/searchusers";
+import { createchat } from "@/socketManager";
 
 interface CardsProps {
   CardList: searchUsersType[];
@@ -14,14 +15,23 @@ const SearchResult: React.FC<CardsProps> = ({ CardList }) => {
   console.log(userChats);
 
   const checkChatExists = (chatPartnerrId: string) => {
-    for (let i of userChats) {
-      if (i.ChatpartnerId === chatPartnerrId) return true;
+    if (userChats) {
+      for (let i of userChats) {
+        if (i.ChatpartnerId === chatPartnerrId) return true;
+      }
+      return false;
     }
-    return false;
   };
 
+  // const handleCreateChat = (user2Id: string) => {
+  //   axios.post("http://localhost:8080/api/createchat", {
+  //     user1Id: userData.userId,
+  //     user2Id,
+  //   });
+  // };
+
   const handleCreateChat = (user2Id: string) => {
-    axios.post("http://localhost:8080/api/createchat", {
+    createchat({
       user1Id: userData.userId,
       user2Id,
     });
