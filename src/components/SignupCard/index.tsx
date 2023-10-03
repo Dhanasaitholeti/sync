@@ -13,7 +13,6 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import axios from "axios";
 import { useToast } from "../ui/use-toast";
-import { log } from "console";
 
 const labelStyles = "text-md font-bold";
 const fieldStyles = "grid w-full max-w-sm items-center gap-1.5";

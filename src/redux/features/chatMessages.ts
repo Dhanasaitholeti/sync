@@ -37,7 +37,7 @@ export const msgSlice: any = createSlice({
     },
     realtimeUpdate: (state, action: any) => {
       const { msg } = action.payload;
-      state.msgs[msg.chatId].push(msg);
+      if (state.msgs) state.msgs[msg.chatId].push(msg);
     },
   },
 });

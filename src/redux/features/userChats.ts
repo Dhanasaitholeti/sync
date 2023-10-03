@@ -7,11 +7,11 @@ interface chatType {
 }
 
 interface actionType {
-  payload: { chats: chatType[]; err: Boolean };
+  payload: { chats: chatType[] | null; err: Boolean };
 }
 
 export interface chatStateType {
-  chats: chatType[] | null;
+  chats: null | chatType[];
   err: Boolean;
 }
 
@@ -30,10 +30,12 @@ export const chatSlice = createSlice({
     },
     realtimeUpdate: (
       state,
-      action: { payload: { chat: chatType; err: Boolean } }
+      action: { payload: { chat: chatType | null; err: Boolean } }
     ) => {
-      state.chats?.push(action.payload.chat);
-      state.err = action.payload.err;
+      if (action.payload.chat) {
+        state.chats?.push(action.payload.chat);
+        state.err = action.payload.err;
+      }
     },
   },
 });
