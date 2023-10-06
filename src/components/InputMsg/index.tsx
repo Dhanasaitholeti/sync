@@ -7,6 +7,7 @@ import { BsFillSendFill } from "react-icons/bs";
 import { realtimeUpdate } from "@/redux/features/chatMessages";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
+import { GetDateTime } from "@/helpers/Datetime";
 
 const InputMsg = () => {
   const dispatcher = useDispatch();
@@ -21,6 +22,7 @@ const InputMsg = () => {
       content: msg,
       senderId: currentuser.userId,
       chatId: chatIds[chatIds.length - 1],
+      sentTime: new Date(),
     };
   };
 

@@ -1,5 +1,5 @@
 import { indvidualMessageType } from "@/configs/Types";
-import { Card } from "../ui/card";
+import { Card, CardFooter } from "../ui/card";
 import { useSelector } from "react-redux";
 import { useEffect, useRef } from "react";
 import { BiSolidConversation } from "react-icons/bi";
@@ -34,7 +34,14 @@ const RenderChats: React.FC<chatMessageType> = ({ chats }) => {
                   : "self-start sidebar-bg-color rounded-tl-none p-2 flex items-center"
               }`}
             >
-              <p>{msg.content}</p>
+              <div>
+                <p className="font-semibold">{msg.content}</p>
+                <div className="flex justify-end">
+                  <p className="text-sm  opacity-85">
+                    {msg.sentTime.slice(12, 16)}
+                  </p>
+                </div>
+              </div>
             </Card>
           ))
         ) : (

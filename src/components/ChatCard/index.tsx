@@ -33,7 +33,7 @@ const ChatCard: React.FC<ChatsDataprops> = ({ Chatlist }) => {
             </Avatar>
 
             <div className="ml-4">
-              <p className="text-md font-bold md:text-xl ">
+              <p className="text-md font-bold lg:text-xl ">
                 {chat.Chatpartner}
               </p>
             </div>
