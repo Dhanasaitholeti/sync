@@ -3,18 +3,21 @@ import SideBar from "../SideBar";
 import { InitializeSocket, socket } from "@/socketManager";
 import { realtimeUpdate as msgupdate } from "@/redux/features/chatMessages";
 import { realtimeUpdate as chatupdate } from "@/redux/features/userChats";
+import { useSelector } from "react-redux";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const dispatcher = useDispatch();
+  const chatMessages = useSelector((state: any) => state.chatMsgs.msgs);
 
   if (!socket) {
     InitializeSocket();
   }
   socket?.on("receive_messages", (Data) => {
     console.log(Data);
+    // checkDuplicate(Data, chatMessages[Data.chatId]);
     dispatcher(msgupdate({ msg: Data }));
   });
 

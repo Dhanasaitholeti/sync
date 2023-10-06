@@ -14,7 +14,7 @@ import logo from "../../assets/logo.png";
 import axios from "axios";
 import { useToast } from "../ui/use-toast";
 
-const labelStyles = "text-md font-bold";
+const labelStyles = "text-sm md:text-md font-bold";
 const fieldStyles = "grid w-full max-w-sm items-center gap-1.5";
 
 const SignupCard = () => {
@@ -51,14 +51,14 @@ const SignupCard = () => {
   console.log(signupData);
 
   return (
-    <Card className="w-full max-w-lg h-[75vh] drop-shadow-2xl pt-10 pb-4">
-      <CardHeader>
+    <Card className="w-full max-w-sm md:max-w-lg md:h-[75vh] overflow-auto drop-shadow-2xl py-10">
+      <CardHeader className="pt-0">
         <div className="flex items-start justify-center">
           <div className="bg-blue-500 h-20 w-20 rounded-full">
             <img src={logo} alt="Logo" className="aspect-square" />
           </div>
         </div>
-        <CardTitle className="text-center text-2xl font-bold">
+        <CardTitle className="text-center text-xl md:text-2xl font-bold">
           Sign up for Synk
         </CardTitle>
       </CardHeader>
