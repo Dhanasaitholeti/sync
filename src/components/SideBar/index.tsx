@@ -23,7 +23,7 @@ const SideBar = () => {
 
   return (
     <>
-      <aside className=" px-2 py-1 sidebar-bg-color flex flex-col space-y-5 shadow-md max-h-[100vh]">
+      <aside className=" px-2 py-1 sidebar-bg-color flex flex-col space-y-5  max-h-screen">
         <div className="flex justify-between items-center px-2 gap-5">
           <div
             onClick={handleProfileClick}
@@ -52,7 +52,7 @@ const SideBar = () => {
 
         <Separator />
 
-        <div className="space-y-5 ">
+        <div className="space-y-5">
           <div className="overflow-y-scroll max-h-[70vh] min-h-[60vh]">
             {userChats ? <ChatCard Chatlist={userChats} /> : <ChatSkeleton />}
           </div>
