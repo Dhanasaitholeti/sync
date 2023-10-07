@@ -18,6 +18,7 @@ import { useToast } from "../ui/use-toast";
 import { authUrls } from "@/configs/url";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
+import Spinner from "../Loaders/Spinner";
 
 //common styles
 const labelStyles = "text-sm md:text-md font-semibold";
@@ -80,8 +81,9 @@ const LoginCard = () => {
       </CardHeader>
       <CardContent className="flex flex-col items-center justify-center gap-5">
         {loading ? (
-          <h1>Loading......</h1>
+          <Spinner />
         ) : (
+          // <h1>Loading......</h1>
           <>
             <div className={fieldStyles}>
               <Label htmlFor="Email" className={labelStyles}>
