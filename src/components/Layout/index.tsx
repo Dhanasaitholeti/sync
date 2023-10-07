@@ -5,6 +5,7 @@ import { realtimeUpdate as msgupdate } from "@/redux/features/chatMessages";
 import { realtimeUpdate as chatupdate } from "@/redux/features/userChats";
 // import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { socketUrls } from "@/configs/url";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -17,13 +18,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   if (!socket) {
     InitializeSocket();
   }
-  socket?.on("receive_messages", (Data) => {
+  socket?.on(socketUrls.channels.receiveMessage, (Data) => {
     console.log(Data);
     // checkDuplicate(Data, chatMessages[Data.chatId]);
     dispatcher(msgupdate({ msg: Data }));
   });
 
-  socket?.on("newchat", (Data) => {
+  socket?.on(socketUrls.channels.newChats, (Data) => {
     dispatcher(chatupdate({ chat: Data, err: false }));
   });
 

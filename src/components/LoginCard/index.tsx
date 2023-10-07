@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import logo from "../../assets/logo.png";
 import { useToast } from "../ui/use-toast";
+import { authUrls } from "@/configs/url";
 
 //common styles
 const labelStyles = "text-sm md:text-md font-bold";
@@ -39,10 +40,7 @@ const LoginCard = () => {
   const handleLoginSubmit = async () => {
     setLoading(true);
     try {
-      const resp = await axios.post(
-        "http://localhost:8080/user/login",
-        Credential
-      );
+      const resp = await axios.post(authUrls.login, Credential);
       toast({
         title: "Logged in Successfully",
         description: "Chat with your friends",

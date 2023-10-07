@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import axios from "axios";
 import { useToast } from "../ui/use-toast";
+import { authUrls } from "@/configs/url";
 
 const labelStyles = "text-sm md:text-md font-bold";
 const fieldStyles = "grid w-full max-w-sm items-center gap-1.5";
@@ -34,7 +35,7 @@ const SignupCard = () => {
 
   const handleSignupClick = async () => {
     try {
-      await axios.post("http://localhost:8080/user/signup", signupData);
+      await axios.post(authUrls.signup, signupData);
       toast({
         title: "Signup successful",
         description: "Now try to login",
