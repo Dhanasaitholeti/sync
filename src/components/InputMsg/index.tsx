@@ -22,7 +22,7 @@ const InputMsg = () => {
       content: msg,
       senderId: currentuser.userId,
       chatId: chatIds[chatIds.length - 1],
-      sentTime: new Date(),
+      sentTime: GetDateTime(),
     };
   };
 

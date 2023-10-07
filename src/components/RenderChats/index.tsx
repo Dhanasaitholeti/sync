@@ -1,5 +1,5 @@
 import { indvidualMessageType } from "@/configs/Types";
-import { Card, CardFooter } from "../ui/card";
+import { Card } from "../ui/card";
 import { useSelector } from "react-redux";
 import { useEffect, useRef } from "react";
 import { BiSolidConversation } from "react-icons/bi";
@@ -38,7 +38,7 @@ const RenderChats: React.FC<chatMessageType> = ({ chats }) => {
                 <p className="font-semibold">{msg.content}</p>
                 <div className="flex justify-end">
                   <p className="text-sm  opacity-85">
-                    {msg.sentTime.slice(12, 16)}
+                    {msg.sentTime.slice(11, 16)}
                   </p>
                 </div>
               </div>
