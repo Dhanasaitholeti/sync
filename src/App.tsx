@@ -8,8 +8,17 @@ import Chat from "./pages/Chat";
 import SearchChat from "./components/SearchChat";
 import Profile from "./components/Profile";
 import { Toaster } from "./components/ui/toaster";
+import { useDispatch } from "react-redux";
+import { updateTheme } from "./redux/features/theme";
 
 function App() {
+  const dispatcher = useDispatch();
+  const setTheme = localStorage.getItem("theme");
+  if (setTheme) {
+    if (setTheme === "dark") {
+      dispatcher(updateTheme({ theme: "dark" }));
+    }
+  }
   return (
     <>
       <Toaster />

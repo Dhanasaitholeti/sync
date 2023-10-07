@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 import SearchResultCard from "../SearchResultCard";
 import { RootState } from "@/redux/store";
+import { authUrls } from "@/configs/url";
 
 const SearchChat = () => {
   const dispatcher = useDispatch();
@@ -13,12 +14,11 @@ const SearchChat = () => {
 
   useEffect(() => {
     const searchWithEmail = async () => {
-      const resp = await axios.get("http://localhost:8080/api/search", {
+      const resp = await axios.get(authUrls.allusers, {
         headers: {
           Authorization: "Bearer " + Cookies.get("SynkToken"),
         },
       });
-      console.log(resp.data.Data);
       dispatcher(updateSearchusers({ userlist: resp.data.Data, err: false }));
     };
 

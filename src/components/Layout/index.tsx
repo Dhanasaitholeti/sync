@@ -3,9 +3,10 @@ import SideBar from "../SideBar";
 import { InitializeSocket, socket } from "@/socketManager";
 import { realtimeUpdate as msgupdate } from "@/redux/features/chatMessages";
 import { realtimeUpdate as chatupdate } from "@/redux/features/userChats";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { socketUrls } from "@/configs/url";
+import { RootState } from "@/redux/store";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -13,7 +14,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const dispatcher = useDispatch();
   const location = useLocation();
-  // const chatMessages = useSelector((state: any) => state.chatMsgs.msgs);
+  const theme = useSelector((state: RootState) => state.theme.theme);
 
   if (!socket) {
     InitializeSocket();
@@ -32,7 +33,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <>
       <div className="h-screen grid xl:grid-cols-5 sm:grid-cols-3 md:grid-cols-3">
         <div
-          className={`${
+          className={`
+          ${theme === "light" ? "sidebar-bg-color" : "sidebar-bg-color-dark"}
+          ${
             location.pathname.startsWith("/chat") ||
             location.pathname.startsWith("/profile") ||
             location.pathname.startsWith("/search")
@@ -44,7 +47,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         </div>
 
         <div
-          className={`xl:col-span-4 sm:grid sm:col-span-2 grid-rows-10 bg-custom-gradient md:col-span-2 ${
+          className={`xl:col-span-4 sm:grid sm:col-span-2 grid-rows-10 md:col-span-2 ${
+            theme === "light" ? "bg-custom-gradient" : "bg-custom-gradient-dark"
+          } ${
             location.pathname.startsWith("/chat") ||
             location.pathname.startsWith("/profile") ||
             location.pathname.startsWith("/search")

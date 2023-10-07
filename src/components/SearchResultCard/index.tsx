@@ -3,15 +3,16 @@ import { Card } from "../ui/card";
 import { useSelector } from "react-redux";
 import { searchUsersType } from "@/redux/features/searchusers";
 import { createchat } from "@/socketManager";
+import { RootState } from "@/redux/store";
 
 interface CardsProps {
   CardList: searchUsersType[];
 }
 
 const SearchResult: React.FC<CardsProps> = ({ CardList }) => {
-  const userData = useSelector((state: any) => state.user.user);
-  const userChats = useSelector((state: any) => state.userChats.chats);
-  console.log(userChats);
+  const userData = useSelector((state: RootState) => state.user.user);
+  const userChats = useSelector((state: RootState) => state.userChats.chats);
+  const theme = useSelector((state: RootState) => state.theme.theme);
 
   const checkChatExists = (chatPartnerrId: string) => {
     if (userChats) {
@@ -31,13 +32,17 @@ const SearchResult: React.FC<CardsProps> = ({ CardList }) => {
 
   const handleCreateChat = (user2Id: string) => {
     createchat({
-      user1Id: userData.userId,
+      user1Id: userData?.userId,
       user2Id,
     });
   };
 
   return (
-    <div className="max-w-5xl rounded-lg h-[90vh] px-14 py-5 sidebar-bg-color flex flex-col gap-4">
+    <div
+      className={`max-w-5xl rounded-lg h-[90vh] px-14 py-5 flex flex-col gap-4 ${
+        theme === "light" ? "sidebar-bg-color" : "sidebar-bg-color-dark"
+      }`}
+    >
       {CardList &&
         CardList.map((card) => (
           <Card

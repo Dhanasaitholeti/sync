@@ -20,10 +20,15 @@ const SideBar = () => {
   };
 
   const userChats = useSelector((state: RootState) => state.userChats.chats);
+  const theme = useSelector((state: RootState) => state.theme.theme);
 
   return (
     <>
-      <aside className=" px-2 py-1 sidebar-bg-color flex flex-col space-y-5  max-h-screen">
+      <aside
+        className={`px-2 py-1  flex flex-col space-y-5  max-h-screen ${
+          theme === "light" ? "sidebar-bg-color" : "sidebar-bg-color-dark"
+        }`}
+      >
         <div className="flex justify-between items-center px-2 gap-5">
           <div
             onClick={handleProfileClick}
