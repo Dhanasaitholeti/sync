@@ -1,10 +1,10 @@
 export const authUrls = {
-  login: "http://localhost:8080/user/login",
-  signup: "http://localhost:8080/user/signup",
+  login: "https://synk-li6v.onrender.com/user/login",
+  signup: "https://synk-li6v.onrender.com/user/signup",
 };
 
 export const socketUrls = {
-  connectionurl: "http://localhost:8080/",
+  connectionurl: "https://synk-li6v.onrender.com/",
   channels: {
     receiveMessage: "receive_messages",
     newChats: "newchat",
