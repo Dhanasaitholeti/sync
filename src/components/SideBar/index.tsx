@@ -23,11 +23,11 @@ const SideBar = () => {
 
   return (
     <>
-      <aside className=" px-2 py-1 sidebar-bg-color flex flex-col space-y-5 shadow-md max-h-[100vh]">
+      <aside className=" px-2 py-1 sidebar-bg-color flex flex-col space-y-5  max-h-screen">
         <div className="flex justify-between items-center px-2 gap-5">
           <div
             onClick={handleProfileClick}
-            className={`aspect-square cursor-pointer rounded-full h-14 flex items-center justify-center border border-blue-400 hover:bg-transparent  hover:text-blue-400 ${
+            className={`aspect-square cursor-pointer rounded-full h-12 md:h-14 flex items-center justify-center border border-blue-400 hover:bg-transparent  hover:text-blue-400 ${
               location.pathname === "/profile"
                 ? "bg-transparent text-blue-600"
                 : " bg-blue-500  text-white"
@@ -45,14 +45,14 @@ const SideBar = () => {
             }
             `}
           >
-            <span className="text-lg">New Chat</span>
+            <span className="text-md lg:text-lg">New Chat</span>
             <HiUserAdd size={24} />
           </Button>
         </div>
 
         <Separator />
 
-        <div className="space-y-5 ">
+        <div className="space-y-5">
           <div className="overflow-y-scroll max-h-[70vh] min-h-[60vh]">
             {userChats ? <ChatCard Chatlist={userChats} /> : <ChatSkeleton />}
           </div>

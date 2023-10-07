@@ -19,6 +19,14 @@ body {
   );
 }
 
+.bg-custom-gradient-dark {
+  background-image: linear-gradient(to bottom right, #471069 20%, #923347);
+}
+
 .sidebar-bg-color {
   background-color: #fefefa;
+}
+
+.sidebar-bg-color-dark {
+  background-color: #243748;
 }

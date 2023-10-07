@@ -5,6 +5,7 @@ import { updateChats } from "@/redux/features/userChats";
 import { updateMsgs } from "@/redux/features/chatMessages";
 import { extractedMsgsType } from "@/configs/Types";
 import { updateUser } from "@/redux/features/userData";
+import { socketUrls } from "@/configs/url";
 
 let socket: Socket | null = null;
 
@@ -12,7 +13,7 @@ const InitializeSocket = () => {
   const dispatcher = useDispatch();
 
   if (Cookies.get("SynkToken") && !socket) {
-    socket = io("http://localhost:8080", {
+    socket = io(socketUrls.connectionurl, {
       auth: {
         token: Cookies.get("SynkToken"),
       },
@@ -65,11 +66,11 @@ const InitializeSocket = () => {
 
 //has to update the any with appropriate type anotattion
 const emitMessage = (message: any) => {
-  socket?.emit("sendMessage", message);
+  socket?.emit(socketUrls.channels.sendMessage, message);
 };
 
 const createchat = (Data: any) => {
-  socket?.emit("createChat", Data);
+  socket?.emit(socketUrls.channels.createNewChat, Data);
 };
 
 export { socket, InitializeSocket, emitMessage, createchat };
