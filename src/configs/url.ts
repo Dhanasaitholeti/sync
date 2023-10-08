@@ -1,4 +1,4 @@
-const localServerhost = "http://localhost:8080";
+//const localServerhost = "http://localhost:8080";
 const cloudServerHost = "https://synk-li6v.onrender.com";
 
 const currenthost = cloudServerHost;
