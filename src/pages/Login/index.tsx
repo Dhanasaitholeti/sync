@@ -1,14 +1,15 @@
 import LoginCard from "@/components/LoginCard";
-
-const theme = localStorage.getItem("theme");
+import { RootState } from "@/redux/store";
+import { useSelector } from "react-redux";
 
 const Login = () => {
+  const theme = useSelector((state: RootState) => state.theme.theme);
   return (
     <>
       <main
-        className={`relative ${
-          theme ? "bg-custom-gradient-dark" : "bg-custom-gradient"
-        } h-screen flex items-center justify-center overflow-auto`}
+        className={`relative  h-screen flex items-center justify-center overflow-auto ${
+          theme === "light" ? "bg-custom-gradient" : "bg-custom-gradient-dark"
+        }`}
       >
         <LoginCard />
       </main>

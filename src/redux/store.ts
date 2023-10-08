@@ -3,12 +3,14 @@ import chatReducer, { chatStateType } from "./features/userChats";
 import msgReducer from "./features/chatMessages";
 import userReducer, { userDataStateType } from "./features/userData";
 import searchUserReducer, { searchUserStateType } from "./features/searchusers";
+import themeReducer, { themeStateType } from "./features/theme";
 export const store = configureStore({
   reducer: {
     user: userReducer,
     userChats: chatReducer,
     chatMsgs: msgReducer,
     searchUser: searchUserReducer,
+    theme: themeReducer,
   },
 });
 
@@ -20,4 +22,5 @@ export type RootState = {
   userChats: chatStateType;
   // chatMsgs: ChatMsgsState; // Define types for other slices too
   searchUser: searchUserStateType;
+  theme: themeStateType;
 };

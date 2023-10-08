@@ -9,12 +9,23 @@ import { useDispatch } from "react-redux";
 import { updateChats } from "@/redux/features/userChats";
 import { updateMsgs } from "@/redux/features/chatMessages";
 import { useToast } from "../ui/use-toast";
+import { RootState } from "@/redux/store";
+import { updateTheme } from "@/redux/features/theme";
 
 const Profile = () => {
   const { toast } = useToast();
   const dispatcher = useDispatch();
   const userData = useSelector((state: any) => state.user.user);
   const navigate = useNavigate();
+  const theme = useSelector((state: RootState) => state.theme.theme);
+  console.log(theme);
+
+  const handleThemeChange = () => {
+    if (theme === "light") {
+      localStorage.setItem("theme", "dark");
+      dispatcher(updateTheme({ theme: "dark" }));
+    } else dispatcher(updateTheme({ theme: "light" }));
+  };
 
   const handleLogout = () => {
     Cookies.remove("SynkToken");
@@ -30,7 +41,13 @@ const Profile = () => {
   return (
     <main className="container pt-[5%] max-w-4xl">
       {userData && (
-        <Card className="h-[75vh] sidebar-bg-color">
+        <Card
+          className={`h-[75vh] ${
+            theme === "light"
+              ? "sidebar-bg-color"
+              : "sidebar-bg-color-dark text-white"
+          }`}
+        >
           <CardHeader className="flex items-center justify-center">
             <div className="aspect-square h-24 cursor-pointer rounded-full bg-blue-500  flex items-center justify-center text-white hover:bg-transparent hover:border hover:border-blue-400 hover:text-blue-400">
               <CgProfile size={32} />
@@ -42,7 +59,10 @@ const Profile = () => {
             <p className="text-2xl  font-bold">{userData.userEmail}</p>
           </CardContent>
           <CardFooter className="flex flex-col gap-5 ">
-            <Button className="w-full max-w-md bg-blue-400 hover:bg-transparent hover:text-blue-600 hover:font-bold border border-blue-400">
+            <Button
+              className="w-full max-w-md bg-blue-400 hover:bg-transparent hover:text-blue-600 hover:font-bold border border-blue-400"
+              onClick={handleThemeChange}
+            >
               Change theme
             </Button>
             <Button
