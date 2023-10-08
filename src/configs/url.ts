@@ -1,11 +1,16 @@
+const localServerhost = "http://localhost:8080";
+const cloudServerHost = "https://synk-li6v.onrender.com";
+
+const currenthost = cloudServerHost;
+
 export const authUrls = {
-  login: "https://synk-li6v.onrender.com/user/login",
-  signup: "https://synk-li6v.onrender.com/user/signup",
-  allusers: "https://synk-li6v.onrender.com/api/search",
+  login: `${currenthost}/user/login`,
+  signup: `${currenthost}/user/signup`,
+  allusers: `${currenthost}/api/search`,
 };
 
 export const socketUrls = {
-  connectionurl: "https://synk-li6v.onrender.com/",
+  connectionurl: currenthost,
   channels: {
     receiveMessage: "receive_messages",
     newChats: "newchat",
