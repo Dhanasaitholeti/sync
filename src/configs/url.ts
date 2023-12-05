@@ -1,7 +1,7 @@
-//const localServerhost = "http://localhost:8080";
-const cloudServerHost = "https://synk-li6v.onrender.com";
+const localServerhost = "http://localhost:8080";
+// const cloudServerHost = "https://synk-li6v.onrender.com";
 
-const currenthost = cloudServerHost;
+const currenthost = localServerhost;
 
 export const authUrls = {
   login: `${currenthost}/user/login`,

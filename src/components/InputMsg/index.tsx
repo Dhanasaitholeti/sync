@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { emitMessage } from "@/socketManager";
+import { emitMessage } from "@/services/socketManager";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { BsFillSendFill } from "react-icons/bs";
-import { realtimeUpdate } from "@/redux/features/chatMessages";
+import { realtimeUpdate } from "@/services/redux/features/chatMessages";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { GetDateTime } from "@/helpers/Datetime";

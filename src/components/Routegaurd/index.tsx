@@ -21,6 +21,7 @@ const Routegaurd = () => {
       navigate("/home");
     }
   }, [location.pathname]);
+  
 
   return (
     <>

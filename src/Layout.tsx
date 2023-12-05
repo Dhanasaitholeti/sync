@@ -1,12 +1,12 @@
 import { useDispatch } from "react-redux";
-import SideBar from "../SideBar";
-import { InitializeSocket, socket } from "@/socketManager";
-import { realtimeUpdate as msgupdate } from "@/redux/features/chatMessages";
-import { realtimeUpdate as chatupdate } from "@/redux/features/userChats";
+import SideBar from "./components/SideBar";
+import { InitializeSocket, socket } from "@/services/socketManager";
+import { realtimeUpdate as msgupdate } from "@/services/redux/features/chatMessages";
+import { realtimeUpdate as chatupdate } from "@/services/redux/features/userChats";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { socketUrls } from "@/configs/url";
-import { RootState } from "@/redux/store";
+import { RootState } from "@/services/redux/store";
 
 interface LayoutProps {
   children: React.ReactNode;

@@ -17,7 +17,7 @@ import logo from "../../assets/logo.png";
 import { useToast } from "../ui/use-toast";
 import { authUrls } from "@/configs/url";
 import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
+import { RootState } from "@/services/redux/store";
 import Spinner from "../Loaders/Spinner";
 
 //common styles

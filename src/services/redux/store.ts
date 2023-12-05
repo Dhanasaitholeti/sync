@@ -5,6 +5,7 @@ import userReducer, { userDataStateType } from "./features/userData";
 import searchUserReducer, { searchUserStateType } from "./features/searchusers";
 import themeReducer, { themeStateType } from "./features/theme";
 import filterMiddleware from "./filterMiddleware";
+
 export const store = configureStore({
   reducer: {
     user: userReducer,

@@ -1,5 +1,5 @@
 import LoginCard from "@/components/LoginCard";
-import { RootState } from "@/redux/store";
+import { RootState } from "@/services/redux/store";
 import { useSelector } from "react-redux";
 
 const Login = () => {

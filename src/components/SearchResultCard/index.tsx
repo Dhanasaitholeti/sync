@@ -1,9 +1,9 @@
 import { Button } from "../ui/button";
 import { Card } from "../ui/card";
 import { useSelector } from "react-redux";
-import { searchUsersType } from "@/redux/features/searchusers";
-import { createchat } from "@/socketManager";
-import { RootState } from "@/redux/store";
+import { searchUsersType } from "@/services/redux/features/searchusers";
+import { createchat } from "@/services/socketManager";
+import { RootState } from "@/services/redux/store";
 
 interface CardsProps {
   CardList: searchUsersType[];

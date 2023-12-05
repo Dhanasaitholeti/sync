@@ -14,7 +14,7 @@ import logo from "../../assets/logo.png";
 import axios from "axios";
 import { useToast } from "../ui/use-toast";
 import { authUrls } from "@/configs/url";
-import { RootState } from "@/redux/store";
+import { RootState } from "@/services/redux/store";
 import { useSelector } from "react-redux";
 import Spinner from "../Loaders/Spinner";
 

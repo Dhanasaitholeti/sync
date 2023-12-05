@@ -1,15 +1,16 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+
+import Login from "./pages/LoginScreen";
+import Signup from "./pages/SignupScreen";
 import Routegaurd from "./components/Routegaurd";
-import Home from "./pages/Home";
-import Layout from "./components/Layout";
-import Chat from "./pages/Chat";
-import SearchChat from "./components/SearchChat";
-import Profile from "./components/Profile";
+import Home from "./pages/HomeScreen";
+import Layout from "./Layout";
+import Chat from "./pages/ChatScreen";
+import SearchChat from "./pages/NewChatScreen";
+import Profile from "./pages/ProfileScreen";
 import { Toaster } from "./components/ui/toaster";
 import { useDispatch } from "react-redux";
-import { updateTheme } from "./redux/features/theme";
+import { updateTheme } from "./services/redux/features/theme";
 
 function App() {
   const dispatcher = useDispatch();

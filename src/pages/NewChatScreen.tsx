@@ -1,11 +1,11 @@
 import axios from "axios";
-import { Input } from "../ui/input";
+import { Input } from "../components/ui/input";
 import { useEffect } from "react";
-import { updateSearchusers } from "@/redux/features/searchusers";
+import { updateSearchusers } from "@/services/redux/features/searchusers";
 import { useSelector, useDispatch } from "react-redux";
 import Cookies from "js-cookie";
-import SearchResultCard from "../SearchResultCard";
-import { RootState } from "@/redux/store";
+import SearchResultCard from "../components/SearchResultCard";
+import { RootState } from "@/services/redux/store";
 import { authUrls } from "@/configs/url";
 
 const SearchChat = () => {

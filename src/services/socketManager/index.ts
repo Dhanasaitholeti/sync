@@ -1,10 +1,10 @@
 import Cookies from "js-cookie";
 import { Socket, io } from "socket.io-client";
 import { useDispatch } from "react-redux";
-import { updateChats } from "@/redux/features/userChats";
-import { updateMsgs } from "@/redux/features/chatMessages";
+import { updateChats } from "@/services/redux/features/userChats";
+import { updateMsgs } from "@/services/redux/features/chatMessages";
 import { extractedMsgsType } from "@/configs/Types";
-import { updateUser } from "@/redux/features/userData";
+import { updateUser } from "@/services/redux/features/userData";
 import { socketUrls } from "@/configs/url";
 
 let socket: Socket | null = null;

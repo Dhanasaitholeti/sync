@@ -1,16 +1,21 @@
 import { useSelector } from "react-redux";
-import { Card, CardHeader, CardContent, CardFooter } from "../ui/card";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardFooter,
+} from "../components/ui/card";
 import { CgProfile } from "react-icons/cg";
-import { Button } from "../ui/button";
+import { Button } from "../components/ui/button";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import { socket } from "../../socketManager";
+import { socket } from "../services/socketManager";
 import { useDispatch } from "react-redux";
-import { updateChats } from "@/redux/features/userChats";
-import { updateMsgs } from "@/redux/features/chatMessages";
-import { useToast } from "../ui/use-toast";
-import { RootState } from "@/redux/store";
-import { updateTheme } from "@/redux/features/theme";
+import { updateChats } from "@/services/redux/features/userChats";
+import { updateMsgs } from "@/services/redux/features/chatMessages";
+import { useToast } from "../components/ui/use-toast";
+import { RootState } from "@/services/redux/store";
+import { updateTheme } from "@/services/redux/features/theme";
 
 const Profile = () => {
   const { toast } = useToast();

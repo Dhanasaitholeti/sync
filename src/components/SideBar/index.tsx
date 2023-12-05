@@ -6,7 +6,7 @@ import { HiUserAdd } from "react-icons/hi";
 import { Button } from "../ui/button";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Separator } from "../ui/separator";
-import { RootState } from "@/redux/store";
+import { RootState } from "@/services/redux/store";
 
 const SideBar = () => {
   const navigate = useNavigate();
@@ -21,6 +21,8 @@ const SideBar = () => {
 
   const userChats = useSelector((state: RootState) => state.userChats.chats);
   const theme = useSelector((state: RootState) => state.theme.theme);
+
+  console.log(userChats);
 
   return (
     <>
@@ -59,7 +61,15 @@ const SideBar = () => {
 
         <div className="space-y-5">
           <div className="overflow-y-scroll max-h-[70vh] min-h-[60vh]">
-            {userChats ? <ChatCard Chatlist={userChats} /> : <ChatSkeleton />}
+            {userChats && userChats?.length > 0 ? (
+              userChats ? (
+                <ChatCard Chatlist={userChats} />
+              ) : (
+                <ChatSkeleton />
+              )
+            ) : (
+              <p>add new chats</p>
+            )}
           </div>
         </div>
       </aside>
